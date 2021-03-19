@@ -1,0 +1,406 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "Harding";
+  src: url("../fonts/HardingText-Regular-Web.woff2") format("woff2"),
+    url("../fonts/HardingText-Regular-Web.woff") format("woff");
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Harding";
+  font-weight: 700;
+  src: url("../fonts/HardingText-Bold-Web.woff2") format("woff2"),
+    url("../fonts/HardingText-Bold-Web.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Harding";
+  font-style: italic;
+  src: url("../fonts/HardingText-RegularItalic-Web.woff2") format("woff2"),
+    url("../fonts/HardingText-RegularItalic-Web.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Harding";
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/HardingText-BoldItalic-Web.woff2") format("woff2"),
+    url("../fonts/HardingText-BoldItalic-Web.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Graphik Nature l Web";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/GraphikNaturel-Regular-Web.woff2") format("woff2"),
+    url("../fonts/GraphikNaturel-Regular-Web.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Graphik Nature l Web";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/GraphikNaturel-Bold-Web.woff2") format("woff2"),
+    url("../fonts/GraphikNaturel-Bold-Web.woff") format("woff");
+}
+
+:root {
+  /* --------------------------------- Colours -------------------------------- */
+
+  /* Black & White */
+  --black-0: #000;
+  --black-1: #262621;
+  --black-2: #333;
+  --black-3: #666;
+  --white-0: #fff;
+  --white-1: #eee;
+  --white-2: #ccc;
+  --white-3: #aaa;
+
+  /* Nature Color Palette */
+  --yellow-1: #efd600;
+  --yellow-2: #ffd500;
+  --yellow-3: #fbba00;
+  --orange-1: #f7a70b;
+  --orange-2: #eb5b25;
+  --orange-3: #e63323;
+  --red-1: #e40428;
+  --red-2: #e5005b;
+  --red-3: #c82285;
+  --purple-1: #964091;
+  --purple-2: #6c4796;
+  --purple-3: #494495;
+  --blue-1: #1951a0;
+  --blue-2: #006eb7;
+  --blue-3: #0085c8;
+  --turquoise-1: #0095bb;
+  --turquoise-2: #0094a4;
+  --turquoise-3: #00928c;
+  --seagreen-1: #008b68;
+  --seagreen-2: #229863;
+  --seagreen-3: #449b50;
+  --leafgreen-1: #3fa535;
+  --leafgreen-2: #76b82a;
+  --leafgreen-3: #c7d530;
+
+  /* ------------------------------ Modular scale ----------------------------- */
+
+  /*	Dimensions are scaled proportionately with the page width */
+
+  /*	The fallback size is 16px */
+
+  font-size: 16px;
+  font-size: min(max(calc(0.5rem + 1vw), 16px), 18px);
+
+  /* Sizes to use */
+  --ratio: 1.5;
+  --s-4: calc(var(--s-3) / var(--ratio));
+  --s-3: calc(var(--s-2) / var(--ratio));
+  --s-2: calc(var(--s-1) / var(--ratio));
+  --s-1: calc(var(--s0) / var(--ratio));
+  --s0: 1rem;
+  --s1: calc(var(--s0) * var(--ratio));
+  --s2: calc(var(--s1) * var(--ratio));
+  --s3: calc(var(--s2) * var(--ratio));
+  --s4: calc(var(--s3) * var(--ratio));
+  --s5: calc(var(--s4) * var(--ratio));
+  --s6: calc(var(--s5) * var(--ratio));
+  --s7: calc(var(--s6) * var(--ratio));
+  --s8: calc(var(--s7) * var(--ratio));
+
+  /* Useful to for fallback values */
+  --no-space: 0;
+
+  /* ---------------------------------- Type ---------------------------------- */
+
+  /* Harding is the defalut font, otherwise apply the sans serif font */
+  --serif-font-family: harding, palatino, times, "Times New Roman", serif;
+  --sans-serif-font: "Graphik Nature l Web", arial, helvetica, sans-serif;
+  --font-size-small-1: calc(var(--s0) / 1.2);
+  --font-size-base: var(--s0);
+  --font-size-big-1: var(--s1);
+  --font-size-big-2: var(--s2);
+  --font-size-big-3: var(--s3);
+  --font-size-big-4: var(--s4);
+
+  /* ----------------------------- Transition time ---------------------------- */
+  --time: 200ms;
+
+  /* --------------------------------- Measure -------------------------------- */
+  --measure: 60ch;
+  --measure-big: calc(var(--measure) * var(--ratio));
+  --measure-small: calc(var(--measure) / var(--ratio));
+
+  /* --------------------------------- Spacing -------------------------------- */
+  --space: var(--s-1);
+  --cover-space: 1rem;
+  --cover-height: 100vh;
+}
+
+/* --------------------------- Light colour scheme -------------------------- */
+body {
+  --link-color: var(--blue-1);
+  --link-color-invert: var(--orange-1);
+  --link-color-active: var(--black-0);
+  --outline: var(--yellow-1);
+  --background-color: var(--white-0);
+  --background-color-invert: var(--black-0);
+  --text-color: var(--black-0);
+  --text-color-invert: var(--white-0);
+}
+
+/* CoverBackgroundVideo and CoverBackgroundImage
+   Make the text visible over the dark background */
+body .cover--with-background {
+  color: var(--text-color-invert);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--serif-font-family);
+  color: var(--text-color);
+  background-color: var(--background-color);
+
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth */
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* ------------------------- Exception based styling ------------------------ */
+* {
+  box-sizing: border-box;
+  max-width: var(--measure);
+}
+
+/* All elements should have a max width of --measure except these */
+html,
+body,
+div,
+aside,
+section,
+main,
+article,
+header,
+figure,
+img,
+video,
+iframe,
+svg,
+canvas,
+footer,
+a {
+  max-width: none;
+}
+
+/* -------------------------------- Elements -------------------------------- */
+
+/* headers */
+h3 {
+  font-size: var(--font-size-big-1);
+}
+
+h2 {
+  font-size: var(--font-size-big-2);
+}
+
+h1 {
+  font-size: var(--font-size-big-3);
+}
+
+/* text */
+p {
+  line-height: 1.4em;
+}
+
+/* links */
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+  fill: var(--link-color);
+}
+
+a:hover,
+a:focus {
+  color: var(--link-color-active);
+  background-color: var(--outline);
+  outline: 3px solid var(--outline);
+  fill: var(--link-color-active);
+}
+
+button:hover,
+button:focus {
+  outline: 3px solid var(--outline);
+}
+
+select:focus {
+  outline: 3px solid var(--outline);
+}
+
+/* Figures */
+figure {
+  margin: 0;
+}
+
+figcaption {
+  box-sizing: content-box;
+  padding-right: var(--caption-space);
+  padding-left: var(--caption-space);
+}
+
+figure > img,
+figure > video,
+iframe {
+  width: 100%;
+}
+
+/* Prevent Superscripts and Subscripts from Affecting Line-Height */
+
+/* https://css-tricks.com/snippets/css/prevent-superscripts-and-subscripts-from-affecting-line-height/ */
+sup,
+sub {
+  position: relative;
+  top: -0.4em;
+  vertical-align: baseline;
+}
+
+sub {
+  top: 0.4em;
+}
+
+/* --------------------------------- Themes --------------------------------- */
+
+[data-theme] {
+  --color--component: initial;
+  --color--global: var(--text-color);
+  --link-color--component: initial;
+  --link-color--global: var(--link-color);
+  --link-color-active--component: initial;
+  --link-color-active--global: var(--link-color-active);
+  --background-color--component: initial;
+  --background-color--global: var(--background-color);
+
+  color: var(--color--component, var(--color--global));
+  background: var(
+    --background-color--component,
+    var(--background-color--global)
+  );
+  fill: var(--color--component, var(--color--global));
+}
+
+[data-theme] a {
+  color: var(--link-color--component, var(--link-color--global));
+  fill: var(--link-color--component, var(--link-color--global));
+}
+
+[data-theme] a:hover,
+[data-theme] a:focus {
+  color: var(--link-color-active--component, var(--link-color-active--global));
+  fill: var(--link-color-active--component, var(--link-color-active--global));
+}
+
+[data-theme="invert"] {
+  --color--component: var(--text-color-invert);
+  --link-color--component: var(--link-color-invert);
+  --background-color--component: var(--background-color-invert);
+}
+
+/* -------------------------------- Modifiers ------------------------------- */
+
+/* Borders */
+.border-above {
+  padding-top: var(--s1);
+  border-top: 1px solid var(--text-color);
+}
+
+/* Dropcap */
+.drop-cap::first-letter {
+  float: left;
+  padding-top: 0.55rem;
+  font-size: 4.85rem;
+  font-style: normal;
+  line-height: 3rem;
+}
+
+/* -------------------------------- Utilities ------------------------------- */
+
+/* Make sure hidden elements are hidden */
+[hidden] {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0 !important;
+  opacity: 0;
+}
+
+/* -------------------------- Text style utilities -------------------------- */
+
+.font-family\:sans-serif {
+  font-family: var(--sans-serif-font);
+}
+
+.font-weight\:bold {
+  font-weight: 800;
+}
+
+.font-style\:italic {
+  font-style: italic;
+}
+
+.text-transform\:uppercase {
+  text-transform: uppercase;
+}
+
+.text-decoration\:none {
+  text-decoration: none;
+}
+
+.text-decoration\:underline {
+  text-decoration: underline;
+}
+
+.letter-spacing\:tight {
+  letter-spacing: -0.02em;
+}
+
+/* --------------------------- Text size utilities -------------------------- */
+
+.font-size\:small {
+  font-size: var(--font-size-small-1);
+}
+
+.font-size\:base {
+  font-size: var(--font-size-base);
+}
+.font-size\:big-1 {
+  font-size: var(--font-size-big-1);
+}
+.font-size\:big-2 {
+  font-size: var(--font-size-big-2);
+}
+.font-size\:big-3 {
+  font-size: var(--font-size-big-3);
+}
+.font-size\:big-4 {
+  font-size: var(--font-size-big-4);
+}
