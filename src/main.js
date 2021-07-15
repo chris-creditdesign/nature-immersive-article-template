@@ -1,5 +1,5 @@
 import App from "./App.svelte";
-import data from "./content/content.json";
+import data from "./content/articledata.json";
 
 let app;
 

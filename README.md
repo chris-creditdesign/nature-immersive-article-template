@@ -4,30 +4,41 @@ Template project to get started with a Nature immersive article.
 
 ## Get started
 
+## Get started
+
 Install the dependencies...
 
-    npm install
+```bash
+npm install
+```
 
-...then start [Rollup](https://rollupjs.org) and serve with [sirv-cli](https://github.com/lukeed/sirv):
+...then start [Rollup](https://rollupjs.org) and serve with [sirv-cli](https://github.com/lukeed/sirv):...then start [Rollup](https://rollupjs.org):
 
-    npm run dev
+```bash
+npm run dev
+```
 
 Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
 
-## Build a SSR version of the page
+## To build static files and javascript for publication
 
-To render the compiled client side js as `public/build/bundle.js`
+```bash
+make clean
+```
 
-    npm run build
+and then
 
-To render a bundled version of the svelte app, which can be run in a node environment to create a SSR version of the app run:
+```bash
+make all
+```
 
-    npm run build:ssr-js
+## Get data from Google Docs
 
-To call `render-static-html.js` to create a static rendering of the html, containing the javascript and the css, as `public/index.html`:
+Uses [googledoc-to-json](https://github.com/bradoyler/googledoc-to-json) to download text from a google doc in a ArchieML format and convert this to json.
 
-    npm run build:ssr-html
+Credentials are stored in `secrets/config.json`.
 
-To run all these processes together:
+Use [google-tokens](https://github.com/bradoyler/google-tokens) to create these details.
 
-    npm run ssr
+Note: The `refresh_token` may be invalidated by google after a period of time. Run `google-tokens` again to get new value.
+

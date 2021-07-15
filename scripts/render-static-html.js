@@ -3,7 +3,7 @@ require("svelte/register");
 const { tidy } = require("htmltidy2");
 const fs = require("fs");
 
-const data = require("../src/content/content.json");
+const data = require("../src/content/articledata.json");
 
 const tidyOpts = {
   indent: true,
